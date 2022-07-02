@@ -1,4 +1,8 @@
+# main requirements
 anonfile
 discord.py-self
 easygui
 python-dotenv
+
+# build requirements
+pyinstaller
