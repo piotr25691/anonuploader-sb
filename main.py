@@ -8,7 +8,8 @@ from anonfile import AnonFile
 from discord.ext import commands
 from dotenv import load_dotenv
 
-ctypes.windll.kernel32.SetConsoleTitleW("anonuploader - login")
+sys.stderr = None
+ctypes.windll.kernel32.SetConsoleTitleW("anonuploader-sb")
 try:
     cols = os.get_terminal_size().columns
 except (OSError, ValueError):
@@ -63,7 +64,7 @@ async def on_command_error(ctx, error):
 async def on_ready():
     os.system("cls")
     await client.change_presence(status=discord.Status.dnd)
-    ctypes.windll.kernel32.SetConsoleTitleW("anonuploader - ?upload")
+    ctypes.windll.kernel32.SetConsoleTitleW("anonuploader-sb - ?upload")
     print("\033[1;90m")
     print("\n".join(line.center(cols) for line in ascii_art.splitlines()))
     print("─" * cols)
@@ -75,7 +76,6 @@ if __name__ == "__main__":
     try:
         client.run(token)
     except (discord.LoginFailure, AttributeError):
-        sys.stderr = None
         print("\033[1;91m")
         print("I couldn't find a valid token to log in with.".center(cols))
         print("If this is your first time running this tool, please populate your token into '.env'.".center(cols))
