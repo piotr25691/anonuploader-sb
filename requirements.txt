@@ -1,0 +1,4 @@
+anonfile
+discord.py-self
+easygui
+python-dotenv
